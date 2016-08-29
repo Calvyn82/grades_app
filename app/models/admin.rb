@@ -1,0 +1,7 @@
+class Admin < ActiveRecord::Base
+  has_secure_password
+  validates :email,
+    presence: true,
+    format: /\A[^@\s]+@[^@\s]+\.[^@\s]+\z/,
+    uniqueness: true
+end
