@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <% %i[alert notice].each do |type| %>
+      <div class="alert-default flash_<%= type %>"><%= flash[type] %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

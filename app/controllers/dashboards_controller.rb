@@ -1,8 +1,8 @@
 class DashboardsController < ApplicationController
   before_filter :ensure_admin
 
-  def index
-    @students = Student.order(:hour)
+  def show
+    @students = Student.order_by(:last_name).group_by(:hour)
   end
 
   def new

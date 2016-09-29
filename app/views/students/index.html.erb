@@ -1,0 +1,4 @@
+<%= form_tag({controller: 'students', action: 'show'}, method: 'get') do %>
+  <%= text_field(:student, :school_id) %>
+  <%= submit_tag(:student) %>
+<% end %>

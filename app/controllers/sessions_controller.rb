@@ -4,19 +4,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @admin = Admin.find_by(email: params[:email])
-    if @admin && @admin.authenticate(params[:password])
+    @admin = Admin.find_by(email: params[:admin][:email])
+    if @admin && @admin.authenticate(params[:admin][:password])
       session[:admin_id] = @admin.id
-      redirect_to dashboards_path(@therpist.id)
+      redirect_to dashboard_path(@admin.id)
     else
       flash.now[:alert] = "Email or password didn't match."
+      @admin = Admin.new
       render :new
     end
-  end
-
-  private
-
-  def admin_params
-    params.require(:email, :password)
   end
 end
